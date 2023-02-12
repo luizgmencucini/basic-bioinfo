@@ -21,6 +21,7 @@ fastq-dl SRR18463445
 
 
 ** UNTAR ARCHIVES**
+
 gunzip SRR18463445_1.fastq.gz 
 
 ## fastqc was used to check raw genomic data quality
@@ -31,8 +32,20 @@ conda create --name fastqc-env -c conda-forge -c bioconda fastqc
 
 
 **USAGE**
+
 Activating fastqc environment:
+
 conda activate fastqc-env
+
+## Trimmomatic was used to remove bad reads and adapters
+
+**INSTALLATION**
+
+Conda
+conda create --name trimmomatic-env -c conda-forge -c bioconda trimmomatic
+
+
+**USAGE**
 
 ## spades was used to assemble genome
 
