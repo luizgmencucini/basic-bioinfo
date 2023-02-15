@@ -1,6 +1,6 @@
-#### In this example, we try to assemble and annotate Neurospora crassa genome
-
-## fastq-dl was used to download raw genomic data from SRA or ENA
+In this example, we try to assemble and annotate Escherichia coli genome using Illumina data, Oxford Nanopore data and a combination of both
+## Downloading Raw Data
+### fastq-dl was used to download raw genomic data from SRA or ENA
 
 **INSTALLATION**
 
@@ -8,26 +8,34 @@ Conda
 
 conda create --name fastq-dl-env -c conda-forge -c bioconda fastq-dl
 
+for help:
+
+https://github.com/rpetit3/fastq-dl
 
 **USAGE**
 
 First, activate conda env created before:
+
 conda activate fastq-dl-env 
 
+Illumina raw data was obtained from SRA id SRR17760777 using command bellow:
 
-for help:
-https://github.com/rpetit3/fastq-dl
+fastq-dl SRR17760777
 
-Raw data was obtained from SRA id SRR1797886 using command bellow:
-fastq-dl SRR18463445
+Oxford Nanopore raw data was obtained from SRA id SRR10032546 using command bellow:
 
+fastq-dl SRR10032546
 
-** UNTAR ARCHIVES**
-#### It's not mandatory to do this step because fastqc and trimmomatic can run with 
+**UNTAR ARCHIVES**
 
-gunzip SRR18463445_1.fastq.gz 
+It's not mandatory to do this step because fastqc and trimmomatic can run with .gz files
 
-## fastqc was used to check raw genomic data quality
+gunzip SRR17760777_* 
+
+gunzip SRR10032546.fastq.gz 
+
+## Quality Control
+### fastqc was used to check Illumina raw genomic data quality
 #### This step can be done before and after trimmage, to check how was the process
 **INSTALLATION**
 
@@ -35,14 +43,26 @@ Conda
 
 conda create --name fastqc-env -c conda-forge -c bioconda fastqc
 
-
 **USAGE**
 
 Activating fastqc environment:
 
 conda activate fastqc-env
 
-## Trimmomatic was used to remove bad reads and adapters
+fastqc ../SRR17760777_*
+
+### Nanoplot was used to check Nanopore raw genomic data quality
+#### This step can be done before and after trimmage, to check how was the process
+**INSTALLATION**
+
+Conda
+
+conda create --name nanoplot-env -c conda-forge -c bioconda nanoplot
+
+**USAGE**
+
+## Trimmomatic was used to remove bad reads and adapters from Illumina data
+
 
 **INSTALLATION**
 
