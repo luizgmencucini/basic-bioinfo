@@ -20,11 +20,11 @@ conda activate fastq-dl-env
 
 Illumina raw data was obtained from SRA id SRR17760777 using command bellow:
 
-fastq-dl SRR17760777
+fastq-dl -a SRR17760777
 
 Oxford Nanopore raw data was obtained from SRA id SRR10032546 using command bellow:
 
-fastq-dl SRR10032546
+fastq-dl -a SRR10032546
 
 **UNTAR ARCHIVES**
 
@@ -61,8 +61,13 @@ conda create --name nanoplot-env -c conda-forge -c bioconda nanoplot
 
 **USAGE**
 
-## Trimmomatic was used to remove bad reads and adapters from Illumina data
+Activating fastqc environment:
 
+conda activate nanoplot-env
+
+NanoPlot --fastq SRR10032546_1.fastq
+
+## Trimmomatic was used to remove bad reads and adapters from Illumina data
 
 **INSTALLATION**
 
@@ -72,7 +77,9 @@ conda create --name trimmomatic-env -c conda-forge -c bioconda trimmomatic
 
 **USAGE**
 
-trimmomatic PE -phred33 SRR1797886_1.fastq SRR1797886_2.fastq SRR1797886_1_paired.fastq SRR1797886_1_unpaired.fastq SRR1797886_2_paired.fastq SRR1797886_2_unpaired.fastq ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+wget https://raw.githubusercontent.com/timflutre/trimmomatic/master/adapters/TruSeq3-PE-2.fa
+
+trimmomatic PE -phred33 SRR17760777_1.fastq SRR17760777_2.fastq SRR17760777_1_paired.fastq SRR17760777_1_unpaired.fastq SRR17760777_2_paired.fastq SRR17760777_2_unpaired.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 
 ## spades was used to assemble genome only with illumina NGS data
 
@@ -81,7 +88,6 @@ trimmomatic PE -phred33 SRR1797886_1.fastq SRR1797886_2.fastq SRR1797886_1_paire
 Conda
 
 conda create --name spades-env -c conda-forge -c bioconda spades
-
 
 **USAGE**
 
