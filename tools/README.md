@@ -61,7 +61,7 @@ conda create --name nanoplot-env -c conda-forge -c bioconda nanoplot
 
 **USAGE**
 
-Activating fastqc environment:
+Activating NanoPlot environment:
 
 conda activate nanoplot-env
 
@@ -77,9 +77,29 @@ conda create --name trimmomatic-env -c conda-forge -c bioconda trimmomatic
 
 **USAGE**
 
+Activating Trimmomatic environment:
+
+conda activate trimmomatic-env
+
 wget https://raw.githubusercontent.com/timflutre/trimmomatic/master/adapters/TruSeq3-PE-2.fa
 
 trimmomatic PE -phred33 SRR17760777_1.fastq SRR17760777_2.fastq SRR17760777_1_paired.fastq SRR17760777_1_unpaired.fastq SRR17760777_2_paired.fastq SRR17760777_2_unpaired.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+## NanoFilt was used to remove bad reads and adapters from Nanopore data
+
+**INSTALLATION**
+
+Conda
+
+conda create --name nanofilt-env -c conda-forge -c bioconda NanoFilt
+
+**USAGE**
+
+Activating NanoFilt environment:
+
+conda activate nanofilt-env
+
+NanoFilt -q 5 --headcrop 40 SRR10032546_1.fastq
 
 ## spades was used to assemble genome only with illumina NGS data
 
@@ -91,9 +111,29 @@ conda create --name spades-env -c conda-forge -c bioconda spades
 
 **USAGE**
 
-spades.py --pe1-1 SRR1797886_1_paired.fastq --pe1-2 SRR1797886_2_paired.fastq --pe1-s SRR1797886_1_unpaired.fastq --pe1-s SRR1797886_2_unpaired.fastq -o illumina_assemble
+Activating Spades environment:
 
-## BUSCO and QUAST were used to evaluate genome assembly 
+conda activate spades-env
+
+spades.py --pe1-1 SRR17760777_1_paired.fastq --pe1-2 SRR17760777_2_paired.fastq --pe1-s SRR17760777_1_unpaired.fastq --pe1-s SRR17760777_2_unpaired.fastq -o ../assembly
+
+## Flye was used to assemble genome with only Nanopore data
+
+**INSTALLATION**
+
+Conda
+
+conda create --name flye-env -c conda-forge -c bioconda Flye
+
+**USAGE**
+
+Activating Flye environment:
+
+conda activate flye-env
+
+spades.py --pe1-1 SRR17760777_1_paired.fastq --pe1-2 SRR17760777_2_paired.fastq --pe1-s SRR17760777_1_unpaired.fastq --pe1-s SRR17760777_2_unpaired.fastq -o ../assembly
+
+## BUSCO and QUAST were used to evaluate genomes assemblies
 
 **INSTALLATION**
 
