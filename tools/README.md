@@ -143,7 +143,14 @@ conda create --name busco-env -c conda-forge -c bioconda busco
 
 conda create --name quast-env -c conda-forge -c bioconda quast
 
-
 **USAGE**
+ 
+ conda activate quast-env
+ 
+ quast.py contigs.fasta -r ../../reference_genome/ncbi-genomes-2023-04-08/GCF_000005845.2_ASM584v2_genomic.fna -1 ../SRR17760777_1.fastq -2 ../SRR17760777_2.fastq -o ../assembly_ev/quast/
 
+# Results
 
+## Assembly
+
+# Annotation
