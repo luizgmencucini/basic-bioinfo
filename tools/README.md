@@ -131,7 +131,23 @@ Activating Flye environment:
 
 conda activate flye-env
 
-spades.py --pe1-1 SRR17760777_1_paired.fastq --pe1-2 SRR17760777_2_paired.fastq --pe1-s SRR17760777_1_unpaired.fastq --pe1-s SRR17760777_2_unpaired.fastq -o ../assembly
+flye --nano-hq -o ../assemblySRR10032546_1.fastq -o ./
+
+## UNicycler was used to assemble genome with Nanopore and Illumina data
+
+**INSTALLATION**
+
+Conda
+
+conda create --name unicycler-env -c conda-forge -c bioconda unicycler
+
+**USAGE**
+
+Activating Unicycler environment:
+
+conda activate unicycler-env
+
+unicycler -1 ../illumina_data/SRR17760777_1.fastq -2 ../illumina_data/SRR17760777_2.fastq -l ../nanopore_data/SRR10032546_1.fastq -o ./
 
 ## BUSCO and QUAST were used to evaluate genomes assemblies
 
